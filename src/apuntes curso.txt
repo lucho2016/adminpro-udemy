@@ -1,0 +1,3 @@
+Para hacer que me genere un componente en un modulo determinado
+
+ng g c pages/accountSettings -m="pages/pages.module.ts" --spec=false -is
