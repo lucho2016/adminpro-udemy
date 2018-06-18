@@ -6,6 +6,7 @@ import { Graficas1Component } from './graficas1/graficas1.component';
 import { PromesasComponent } from './promesas/promesas.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
+import { LoginGuardGuard } from '../services/service.index';
 
 
 
@@ -14,6 +15,7 @@ import { RxjsComponent } from './rxjs/rxjs.component';
 const pagesRoutes: Routes = [
     {   path: '',
         component: PagesComponent,
+        canActivate: [ LoginGuardGuard],
         children:
         [
             { path: 'dashboard', component: DashboardComponent, data: { titulo: 'Dashboard' }},
