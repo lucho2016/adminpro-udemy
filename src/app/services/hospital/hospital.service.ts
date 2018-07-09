@@ -4,6 +4,7 @@ import { URL_SERVICIOS } from '../../config/config';
 import { UsuarioService } from '../usuario/usuario.service';
 import { Hospital } from '../../models/hospital.model';
 
+import swal from 'sweetalert';
 
 @Injectable()
 export class HospitalService {
@@ -24,7 +25,7 @@ export class HospitalService {
         });
   }
 
-  borrarHospital( id: string){
+  borrarHospital( id: string) {
     let url = URL_SERVICIOS + '/hospital/' + id;
     url += '?token=' + this._usuarioService.token;
 
@@ -48,13 +49,13 @@ export class HospitalService {
 
   }
 
-  buscarHospital( termino: string ){
+  buscarHospital( termino: string ) {
     let url = URL_SERVICIOS + '/busqueda/coleccion/hospitales/' + termino;
     return this.http.get( url )
               .map((resp: any) => resp.hospitales );
   }
 
-  actualizarHospital( hospital: Hospital ){
+  actualizarHospital( hospital: Hospital ) {
     let url = URL_SERVICIOS + '/hospital/' + hospital._id;
     url += '?token=' + this._usuarioService.token;
 

@@ -1,6 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-// tslint:disable-next-line:import-blacklist
-import { Observable, Subscription } from 'rxjs/Rx';
+
+import { Observable } from 'rxjs/Observable';
+import { Subscription } from 'rxjs/Subscription';
+
+import 'rxjs/add/operator/retry';
+import 'rxjs/add/operator/filter';
 
 @Component({
   selector: 'app-rxjs',
@@ -10,11 +14,10 @@ import { Observable, Subscription } from 'rxjs/Rx';
 export class RxjsComponent implements OnInit, OnDestroy {
 
   subscription: Subscription;
-  constructor() 
-  {
+  constructor() {
     this.subscription = this.regresaObservable()
       .retry()
-      .subscribe( 
+      .subscribe(
       numero => console.log( 'Subs ', numero ),
       error => console.error('Error en el obs', error),
       () => console.log('El observador termino!!')
@@ -30,13 +33,11 @@ export class RxjsComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  regresaObservable(): Observable<any>{
-    return new Observable( observer => 
-    {
+  regresaObservable(): Observable<any> {
+    return new Observable( observer => {
       let contador = 0;
 
-      let intervalo = setInterval ( () => 
-      {
+      let intervalo = setInterval ( () => {
          contador += 1;
 
          let salida = {
@@ -63,10 +64,10 @@ export class RxjsComponent implements OnInit, OnDestroy {
       })
       .filter( (valor, index) => {
 
-        if ((valor % 2) === 1 ){
+        if ((valor % 2) === 1 ) {
           // impar
           return true;
-        }else{
+        } else {
           // par
           return false;
         }

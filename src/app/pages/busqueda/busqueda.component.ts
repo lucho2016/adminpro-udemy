@@ -31,7 +31,7 @@ export class BusquedaComponent implements OnInit {
   ngOnInit() {
   }
 
-  buscar( termino: string ){
+  buscar( termino: string ) {
     let url = URL_SERVICIOS + '/busqueda/todo/' + termino;
 
     this.http.get( url )

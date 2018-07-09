@@ -14,7 +14,7 @@ export class AccountSettingsComponent implements OnInit {
     this.colocarCheck();
   }
 
-  cambiarColor( tema: string, link: any ){
+  cambiarColor( tema: string, link: any ) {
     console.log( link );
 
     this.aplicarCheck( link );
@@ -22,7 +22,7 @@ export class AccountSettingsComponent implements OnInit {
     this._ajustes.aplicarTema( tema );
   }
 
-  aplicarCheck( link: any ){
+  aplicarCheck( link: any ) {
 
     let selectores: any = document.getElementsByClassName('selector');
 
@@ -33,7 +33,7 @@ export class AccountSettingsComponent implements OnInit {
     link.classList.add('working');
   }
 
-  colocarCheck(){
+  colocarCheck() {
     let selectores: any = document.getElementsByClassName('selector');
     let tema = this._ajustes.ajustes.tema;
 
